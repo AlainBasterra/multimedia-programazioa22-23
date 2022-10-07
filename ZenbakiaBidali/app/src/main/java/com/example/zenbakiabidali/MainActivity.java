@@ -20,9 +20,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         try{
 
-
-        int zenbakiBerria = Integer.parseInt(getIntent().getStringExtra("zenbakiBerria")); //SecondActivity-an sartutako zenbakia
         int hasierakoZenbakia = Integer.parseInt(getIntent().getStringExtra("hasierakoZenbakia")); //MainActivity-an sartutako zenbakia
+        int zenbakiBerria = Integer.parseInt(getIntent().getStringExtra("zenbakiBerria")); //SecondActivity-an sartutako zenbakia
 
         txtHasierakoZenbakia = (TextView) findViewById(R.id.txtHasierakoZenbakia);
         txtHasierakoZenbakia.setText(hasierakoZenbakia);

@@ -1,5 +1,9 @@
 package com.example.zenbakiabidali;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,7 +16,16 @@ public class SecondActivity extends AppCompatActivity {
 
     private TextView tv1;
     private EditText edit2;
-    public String hasierakoZenbakia = getIntent().getStringExtra("zenbakia");
+
+    ActivityResultLauncher<Intent> launcherra = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+            if(result.gerResultCode()==RESULT_OK)
+                bueltatu("o((>ω< ))o");
+
+        }
+    });
+
 
 
     @Override
@@ -25,17 +38,18 @@ public class SecondActivity extends AppCompatActivity {
         String zenbakia = getIntent().getStringExtra("zenbakia");
         tv1.setText(zenbakia);
 
-        String hasierakoZenbakia = getIntent().getStringExtra("zenbakia");
+        Intent intent = null;
+        launcherra.launch(intent);
     }
 
-    public void bueltatu(View view){
 
+
+    public void bueltatu(View view){
+        String hZenbakia = getIntent().getStringExtra("zenbakia");
 
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("hasierakoZenbakia", hasierakoZenbakia);
+        intent.putExtra("hasierakoZenbakia", hZenbakia);
         intent.putExtra("zenbakiBerria", edit2.getText().toString());
-
-
 
         startActivity(intent);
     }
