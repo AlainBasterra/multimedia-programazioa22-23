@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BideoJokoaProiektua</string>
+    <string name="txtTitulua">Bideojokoa</string>
+    <string name="txtJokatu">Jokatu</string>
 </resources>
